@@ -62,6 +62,15 @@ for (let i = 0; i < 6; i++) {
     for (let j = 0; j < 5; j++) {
         const block = document.createElement("div");
         block.classList.add("block");
+
+        block.addEventListener('click', () => {
+            if (gameOver || i !== currentRow) {
+                return; 
+            }
+            currentCol = j; //define a coluna atual como clicada
+            updateFocus();
+        });
+        
         row.appendChild(block);
         rowBlocks.push(block);
     }
@@ -72,14 +81,24 @@ for (let i = 0; i < 6; i++) {
 
 // Atualizar foco visual
 function updateFocus() {
-    gridBlocks.forEach((row, i) => {
-        row.forEach(block => {
+    gridBlocks.forEach((rowBlocks, i) => {
+        rowBlocks.forEach(block => {
             block.classList.remove('focused');
+            block.classList.remove('activeRowBlock');
         });
     });
 
-    if (currentRow < 6 && currentCol < 5 && !gameOver) {
-        gridBlocks[currentRow][currentCol].classList.add('focused');
+    if (currentRow < 6 && !gameOver) {
+        
+        // a classe linha ativa eh pra todos blocos agora
+        gridBlocks[currentRow].forEach(block => {
+            block.classList.add('activeRowBlock');
+        });
+
+        // e a classe focado eh no blcoo atual
+        if (currentCol < 5) {
+            gridBlocks[currentRow][currentCol].classList.add('focused');
+        }
     }
 }
 
@@ -98,38 +117,56 @@ function handleKeyPress(key) {
 
 // Adicionar letra
 function addLetter(letter) {
-    if (currentCol < 5) {
-        gridBlocks[currentRow][currentCol].textContent = letter;
+    //coloca a letra no bloco clicado
+    gridBlocks[currentRow][currentCol].textContent = letter;
+    
+    //e move o foco para o prox
+    if (currentCol < 4) {
         currentCol++;
-        updateFocus();
     }
+    updateFocus();
 }
 
 // Deletar letra
 function deleteLetter() {
-    if (currentCol > 0) {
+    const currentBlock = gridBlocks[currentRow][currentCol];
+    //limpa bloco
+    if (currentBlock.textContent !== '') {
+        currentBlock.textContent = '';
+    }
+    else if (currentCol > 0) {
         currentCol--;
         gridBlocks[currentRow][currentCol].textContent = '';
-        updateFocus();
+    }
+    updateFocus();
+}
+
+async function wordExistInDictionary(palavra) {
+    try {
+        const response = await fetch(`https://api.dicionario-aberto.net/word/${palavra.toLowerCase()}`);
+        const data = await response.json();
+        return data.length > 0;
+    } catch {
+        return false;
     }
 }
 
-// Submeter tentativa
-function submitGuess() {
-    if (currentCol !== 5) {
-        showMessage('Palavra incompleta!');
-        return;
-    }
-
-    // Pegar a palavra digitada
+async function submitGuess() {
+    // verifica se a linha está completa
     let guess = '';
     for (let i = 0; i < 5; i++) {
-        guess += gridBlocks[currentRow][i].textContent;
+        const letter = gridBlocks[currentRow][i].textContent;
+        if (letter === '') {
+            showMessage('Palavra incompleta!');
+            return;
+        }
+        guess += letter;
     }
 
-    // Verificar se a palavra está na lista
-    if (!wordList.includes(guess)) {
-        showMessage('Palavra não está na lista!');
+    // Verifica se está na lista local ou no dicionário online
+    const existeNoDicionario = await wordExistInDictionary(guess);
+    if (!wordList.includes(guess) && !existeNoDicionario) {
+        showMessage('Palavra inexistente!');
         return;
     }
 
@@ -151,6 +188,7 @@ function submitGuess() {
         updateFocus();
     }
 }
+
 
 // Avaliar tentativa
 function evaluateGuess(guess) {
@@ -317,3 +355,5 @@ function showJumpscare() {
 }
 // Inicializar foco
 updateFocus();
+
+helpModal.style.display = 'flex'; //mostrar tutorial ao iniciar o jogo
