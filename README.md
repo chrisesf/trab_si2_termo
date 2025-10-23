@@ -2,7 +2,7 @@
 
 **Termoween** é um jogo de adivinhação de palavras inspirado no clássico **Wordle**, mas com temática de **Halloween**!
 
-![Status do Projeto](https://img.shields.io/badge/Status-Em_Conclusão-orange)
+![Status do Projeto](https://img.shields.io/badge/Status-Concluído-orange)
 
 ## 🕯️ Sobre o Projeto
 
@@ -11,13 +11,14 @@ Este projeto foi desenvolvido como parte de um **trabalho para a disciplina de S
 🧡 **Tema:** Halloween  
 💀 **Estilo:** Dark, divertido e misterioso  
 🕷️ **Base:** Jogo de lógica e vocabulário  
+
 ---
-<!-- 
+
 ## 📸 Tela do Jogo
 
-![SPrint do Termoween](link quando estiver pronto)
+![Print do Termoween](exemplo-termoween.png)
 
---- -->
+---
 
 ## 👻 Como Jogar
 
