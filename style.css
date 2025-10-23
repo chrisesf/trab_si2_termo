@@ -1,0 +1,16 @@
+#grid {
+    display: grid;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.gridRow {
+    display: flex;
+}
+
+.block {
+    display: flex;
+    border: 1px solid black;
+    width: 20px;
+    height: 20px;
+}
