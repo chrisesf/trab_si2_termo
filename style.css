@@ -114,8 +114,9 @@ body {
     font-size: calc(48px - 20px);
     font-weight: bold;
     cursor: pointer;
-}
 
+    transition: background-color 0.15s ease, transform 0.15s ease;
+}
 .usedKey {
     background-color: #9F7D65;
 }
@@ -264,4 +265,47 @@ body {
     margin: 0 4px;
     vertical-align: middle;
     border: 2px solid transparent;
+}
+
+#jumpscare {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background-color: black;
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+}
+
+#jumpscare img {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+}
+
+.key:hover {
+    background-color: #E06716;
+    /* Laranja mais escuro */
+    transform: scale(1.05);
+}
+
+/* Efeito para a tecla usada (cinza/marrom) */
+.usedKey:hover {
+    background-color: #8A6C54;
+    /* Marrom mais escuro */
+    transform: scale(1.05);
+}
+
+/* Efeito para a tecla correta (verde) */
+.correctKey:hover {
+    background-color: #5A7A25;
+    /* Verde mais escuro */
+    transform: scale(1.05);
+}
+
+/* Efeito para a tecla presente (amarelo) */
+.presentKey:hover {
+    background-color: #E0A03E;
+    /* Amarelo-laranja mais escuro */
+    transform: scale(1.05);
 }
