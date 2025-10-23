@@ -28,6 +28,9 @@ body {
     font-size: 48px;
     font-weight: bold;
     text-align: center;
+    width: auto;
+    flex:1;
+    justify-content: center;
 }
 
 .hContent {

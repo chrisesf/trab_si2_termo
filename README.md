@@ -2,7 +2,7 @@
 
 **Termoween** é um jogo de adivinhação de palavras inspirado no clássico **Wordle**, mas com temática de **Halloween**!
 
----
+![Status do Projeto](https://img.shields.io/badge/Status-Em_Conclusão-orange)
 
 ## 🕯️ Sobre o Projeto
 
@@ -11,6 +11,23 @@ Este projeto foi desenvolvido como parte de um **trabalho para a disciplina de S
 🧡 **Tema:** Halloween  
 💀 **Estilo:** Dark, divertido e misterioso  
 🕷️ **Base:** Jogo de lógica e vocabulário  
+---
+<!-- 
+## 📸 Tela do Jogo
+
+![SPrint do Termoween](link quando estiver pronto)
+
+--- -->
+
+## 👻 Como Jogar
+
+O objetivo é simples: você tem **6 tentativas** para adivinhar a **palavra secreta de 5 letras** relacionada ao Halloween.
+
+Após cada tentativa, as cores dos blocos mudarão para indicar o quão perto você está:
+
+* 🟩 **Verde:** A letra está na palavra e na **posição correta**.
+* 🟨 **Amarelo:** A letra está na palavra, mas na **posição errada**.
+* ⬛ **Escuro:** A letra **não faz parte** da palavra.
 
 ---
 
@@ -19,3 +36,11 @@ Este projeto foi desenvolvido como parte de um **trabalho para a disciplina de S
 - **HTML5**  
 - **CSS3**  
 - **JavaScript**  
+
+---
+
+### 🎨 Design (Figma)
+
+Todo o layout e design da interface foram planejados no Figma antes da implementação.
+
+* [Acesse o projeto no Figma](https://www.figma.com/design/WQCrZTLztPra38SIctESMd/trabalho-si2?node-id=0-1&t=w0MKslpsFzeOuMnb-1)
