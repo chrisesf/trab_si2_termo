@@ -6,6 +6,9 @@ const keys = [
     'Z', 'X', 'C', 'V', 'B', 'N', 'M', 'ENTER'
 ]
 
+// lista com palavras de 5 letras com temática halloween
+// const wordList = ["BRUXA", "ZUMBI", "VULTO", "LOBOS", "DIABO" "FADAS", "CORVO", "SAPOS", "RATOS", "MOSCA", "COBRA", "GATOS", "VERME", "SUSTO", "PAVOR", "MORTE", "NOITE", "TREVA", "ALMAS", "MAGIA", "LENDA", "FINAL", "CRIME", "GRITO", "CULTO", "SONHO", "PESAR", "MEDOS", "OSSOS", "DENTE", "CORPO", "OLHOS", "TUMBA", "PEDRA", "PORTA", "TORRE", "CERCA", "COVAS", "VELAS", "FACAS", "FOICE", "CAPAS", "DOCES", "FESTA", "PRETO", "LIVRO", "TEMPO", "SINAL", "LUAR"];
+
 const row1 = document.getElementById("row1")
 const row2 = document.getElementById("row2")
 const row3 = document.getElementById("row3")
@@ -62,3 +65,39 @@ for (let i = 0; i < 6; i++) {
 
     grid.appendChild(row)
 }
+
+// popup da equipe
+const teamModal = document.getElementById('teamModal');
+const openTeamModalButton = document.getElementById('teamButton');
+const closeTeamModalButton = teamModal.querySelector('.close-button');
+
+openTeamModalButton.addEventListener('click', () => {
+    teamModal.style.display = 'flex'; 
+});
+
+closeTeamModalButton.addEventListener('click', () => {
+    teamModal.style.display = 'none';
+});
+
+// popupo tutorial
+const helpModal = document.getElementById('helpModal');
+const openHelpModalButton = document.getElementById('helpButton');
+const closeHelpModalButton = helpModal.querySelector('.close-button');
+
+openHelpModalButton.addEventListener('click', () => {
+    helpModal.style.display = 'flex';
+});
+
+closeHelpModalButton.addEventListener('click', () => {
+    helpModal.style.display = 'none';
+});
+
+// fechar os popups se clicar fora
+window.addEventListener('click', (event) => {
+    if (event.target == teamModal) {
+        teamModal.style.display = 'none';
+    }
+    if (event.target == helpModal) {
+        helpModal.style.display = 'none';
+    }
+});

@@ -8,17 +8,26 @@
         <link
             href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
             rel="stylesheet">
-        <title>Document</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- biblioteca com os icones -->
+        
+        <title>TERMOWEEN</title>
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎃</text></svg>"> 
+        
         <link rel="stylesheet" href="style.css">
     </head>
+
     <body>
         <header class="header">
             <div class="hContent buttons">
-                <button class="navigations">I</button>
-                <button class="navigations">?</button>
+                <button class="navigations" id="teamButton">
+                    <i class="fas fa-user"></i> </button>
+                <button class="navigations" id="helpButton">
+                    <i class="fas fa-question"></i>
+                </button>
             </div>
+
             <div class="hContent title">
-                TERMO
+                TERMOWEEN
             </div>
             <div class="hContent"></div>
         </header>
@@ -32,6 +41,63 @@
             <div id="row2"></div>
             <div id="row3"></div>
         </div>
+
+    <div id="teamModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Nosso Grupo 🎃</h2>
+            <ul>
+                <li>Chistian Einhardt</li>
+                <li>Éshiley Garim</li>
+                <li>Victor Amaral</li>
+            </ul>
+        </div>
+        </div>
+
+    <div id="helpModal" class="modal">
+        <div class="modal-content tutorial-content">
+            <span class="close-button">&times;</span>
+            <h2>Como Jogar Termoween 👻</h2>
+            <p>Descubra a palavra secreta em 6 tentativas. As palavras possuem <strong>temática de Halloween!</strong></p>
+            <p>Depois de cada tentatvia, as cores das peças mostrarão o quão perto você esta da solução:</p>
+    
+            <div class="tutorial-example">
+                <div class="tutorial-row">
+                    <div class="block correctPos">B</div>
+                    <div class="block">R</div>
+                    <div class="block">U</div>
+                    <div class="block">X</div>
+                    <div class="block">A</div>
+                </div>
+                <p class="example-description">A letra <span class="block-inline correctPos">B</span> faz parte da palavra eestá na posição correta.</p>
+            </div>
+            <div class="tutorial-example">
+                <div class="tutorial-row">
+                    <div class="block">C</div>
+                    <div class="block">O</div>
+                    <div class="block correctLetter">R</div>
+                    <div class="block">V</div>
+                    <div class="block">O</div>
+                </div>
+                <p class="example-description">A letra <span class="block-inline correctLetter">R</span> faz parte da palavra mas em outra posição.</p>
+            </div>
+            
+            <div class="tutorial-example">
+                <div class="tutorial-row">
+                    <div class="block">Z</div>
+                    <div class="block">U</div>
+                    <div class="block">M</div>
+                    <div class="block incorrectLetter">B</div>
+                    <div class="block">I</div>
+                </div>
+                <p class="example-description">A letra <span class="block-inline incorrectLetter">B</span> não faz parte da palavra.
+                </p>
+            </div>
+            
+            <p>Os acentos são preenchidos automaticamente e não são considerados nas dicas.</p>
+            <p>As palavras podem possuir letras repetidas.</p>
+            </div>
+            </div>
     </body>
     <script src="scripts.js"></script>
 </html>
