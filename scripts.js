@@ -141,9 +141,18 @@ function deleteLetter() {
     updateFocus();
 }
 
-// Submeter tentativa
-function submitGuess() {
-    // verifica se a linha ta completa
+async function wordExistInDictionary(palavra) {
+    try {
+        const response = await fetch(`https://api.dicionario-aberto.net/word/${palavra.toLowerCase()}`);
+        const data = await response.json();
+        return data.length > 0;
+    } catch {
+        return false;
+    }
+}
+
+async function submitGuess() {
+    // verifica se a linha está completa
     let guess = '';
     for (let i = 0; i < 5; i++) {
         const letter = gridBlocks[currentRow][i].textContent;
@@ -154,15 +163,10 @@ function submitGuess() {
         guess += letter;
     }
 
-    // Pegar a palavra digitada
-    // let guess = '';
-    // for (let i = 0; i < 5; i++) {
-    //     guess += gridBlocks[currentRow][i].textContent;
-    // }
-
-    // Verificar se a palavra está na lista
-    if (!wordList.includes(guess)) {
-        showMessage('Palavra não está na lista!');
+    // Verifica se está na lista local ou no dicionário online
+    const existeNoDicionario = await wordExistInDictionary(guess);
+    if (!wordList.includes(guess) && !existeNoDicionario) {
+        showMessage('Palavra inexistente!');
         return;
     }
 
@@ -184,6 +188,7 @@ function submitGuess() {
         updateFocus();
     }
 }
+
 
 // Avaliar tentativa
 function evaluateGuess(guess) {
