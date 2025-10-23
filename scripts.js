@@ -15,6 +15,15 @@ keys.forEach((key, i) => {
     button.textContent = key
     button.classList.add('key')
 
+    const states = [
+        "usedKey",
+        "correctKey",
+        "presentKey"
+    ]
+
+    const rand = Math.random(states.length - 1)
+    button.classList.add(states[(rand * (states.length - 1)).toFixed()])
+
     if (i < 10) {
         row1.appendChild(button)
     } else if (i < 20) {
@@ -30,9 +39,24 @@ for (let i = 0; i < 6; i++) {
     const row = document.createElement("div")
     row.className = "gridRow"
 
-    for (let i = 0; i < 5; i++) {
+    for (let j = 0; j < 5; j++) {
         const block = document.createElement("div")
-        block.className = "block"
+        block.classList = "block"
+
+        // Isso é um exemplo
+        if (i === 0) {
+            block.innerText = "A"
+
+            const states = ["correctPos", "correctLetter", "incorrectLetter"]
+            const rand = Math.random(states.length - 1)
+
+            block.classList.add(states[(rand * (states.length - 1)).toFixed()])
+        }
+
+        if (i === 1) {
+            block.classList = "block focused"
+        }
+
         row.appendChild(block)
     }
 
